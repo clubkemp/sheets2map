@@ -1,0 +1,22 @@
+#mapid { 
+    height: 600px;
+    width:900px; 
+}
+
+.popup h2 {
+    text-align: center;
+}
+
+.popup span {
+    display: block;
+    margin-bottom: 20px;
+    color: grey;
+}
+
+.leaflet-marker-icon{
+    height: 13px;
+    width: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    border: solid black .5px
+}
