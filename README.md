@@ -33,34 +33,39 @@ Line 3
 
 - geoType: *Specify wether your geometry is going to be a point, line, or polygon*
 
-- geometry: *Stores the coordinates for mapping, if using information geocoded above for point the format is `[long, lat]`. More information on getting point, line, polygon geometry below using (geoman.io)*
+- geometry: *Stores the coordinates for mapping, if using information geocoded above for point the format is `[long, lat]`. More information on getting point, line, polygon geometry below using [geoman.io](geoman.io)*
 
 - color: *A hex color specifying the color you want your feature to be mapped with.* **Make sure to include the #**
 
-- icon:*If you are mapping a point, choose what icon you want to represent your point. You can choose any of [Mapbox's Maki icons](https://labs.mapbox.com/maki-icons/), for a visual list follow the link
+- icon: *If you are mapping a point, choose what icon you want to represent your point. You can choose any of [Mapbox's Maki icons](https://labs.mapbox.com/maki-icons/), for a visual list follow the link*
 
 ## So how do I setup a spreadsheet and a map?
 
 ### Step 1: Copy the spreadsheet template
-- With the spreadsheet open, go to file -> 'Make a Copy'
-- With your Copy open, go to file -> click Publish
-- In the upper right corner, click share, get shareable link. This will be the link you will use in step 3 below
+1. With the spreadsheet open, go to file -> 'Make a Copy'
+2. With your Copy open, go to file -> click Publish
+3. In the upper right corner, click share, get shareable link. This will be the link you will use in step 3 below
 
-### Step 2: Clone the sheet2map repo
-- From this repository click 'Clone or download', and choose to download a zip of the repo
+### Step 2: Clone the sheet2map repo, prepare your hosting environment
+1. From this repository click 'Clone or download', and choose to download a zip of the repo
 
-- If you have a hosting environment, your ahead of the curve, upload the sheet2map-master you just downloaded to wherever you want to host it.
+2. If you have a hosting environment, your ahead of the curve, upload the sheet2map-master you just downloaded to wherever you want to host it.
 
-- If you don't have a hosting environment, no problem just use github pages.
-    - Head over to [GitHub](https://github.com/) and [create a new repository](https://github.com/new) named username.github.io, where username is your username (or organization name) on GitHub. You must choose to Initialize your repo with a readme.
+2. If you don't have a hosting environment, no problem just use github pages.
+    1. Head over to [GitHub](https://github.com/) and [create a new repository](https://github.com/new) named username.github.io, where username is your username (or organization name) on GitHub. You must choose to Initialize your repo with a readme.
     (./images/gitpages.jpg) 
     
     *If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.*
 
-    - Now that you have a pages repo, click create new file, in the name your file field give it a short name of your map with no spaces, example being myMap. Add a / at the end. This is going to create a sub-directory with that specified name. Now name your file init and commit the file.
+    2. Now that you have a pages repo, click create new file, in the name your file field give it a short name of your map with no spaces, example being myMap. Add a / at the end. This is going to create a sub-directory with that specified name. Now name your file init and commit the file.
 
-    -In this new sub-directory choose to upload files, and select the files you just downloaded above.
+    3. In this new sub-directory choose to upload files, and select the files you just downloaded above.
 
 if you used the myMap example above, Your map should should now be live at yourusername.github.io/myMap
 
 ### step 3: Connect your sheet
+1. click the index document in the file list of yourusername.github.io/mymap. use the pencil in the top right to start editing your document
+2. on line 72,  `'https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing'` with your spreadsheet url from step 1
+3. At the bottom of the page, click commit changes
+
+That's it! You now have a live map connected to your live google spreadsheet. So now let's start mapping!
