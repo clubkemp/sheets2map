@@ -18,7 +18,9 @@ In the spreadsheet, each sheet, or tab, at the bottom will be mapped as a sepera
 - popup(optional): *Descriptive text that will appear in the popup box when an item is clicked. If you want your text to appear on different lines you must begin the text with `<span>` and end it with `</span>`.* 
 
 Example: `<span>`Line 1`</span><span>`Line2`</span><span>`Line2`</span>`
+
 renders as:
+
 Line 1
 
 Line 2
@@ -26,7 +28,9 @@ Line 2
 Line 3
 
 - address(optional): *If your mapped entity is a discrete location (a point), you can put in the address then geocode it. Select the address, lat, and long cells*
+
  ![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/geocode.JPG)
+
 *on the spreadsheet nav bar, next to help, you should see an option to Geocode. You can now use these lat/long valuse in the geometry column*
 
 - lat/long(optional): *Latitude and Longitude respectively*
@@ -65,7 +69,45 @@ if you used the myMap example above, Your map should should now be live at youru
 
 ### step 3: Connect your sheet
 1. click the index document in the file list of yourusername.github.io/mymap. use the pencil in the top right to start editing your document
-2. on line 72,  `'https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing'` with your spreadsheet url from step 1
+2. on line 72, replace  `'https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing'` with your spreadsheet url from step 1
 3. At the bottom of the page, click commit changes
 
 That's it! You now have a live map connected to your live google spreadsheet. So now let's start mapping!
+
+## Let's start mapping
+In your spreadsheet, go ahead and delete the sample data, and get rid of the additional 'Each tab is a layer' sheet. Don't touch Validation, this contains the information used to generate the dropdown lists in your spreadsheet.
+
+To get lat/long data off of addresses you can use the Geocode function built into your sheet and outlined above in the example map, under the address item
+
+If you want to visually map points, lines, or polygons head over to [geoman.io's editor](https://geoman.io/geojson-editor). Sheet map supports Points, Lines, and Polygons. 
+1. You can draw a marker, line, or polygon using the toggles on the left of the map.
+2. once you draw a feature, it's code pops up in the text editor on the right. Don't let this code frightne you, all you need is to see the geometry section, you are going to copy everything inside the outermost brackets `[Geometry you are going to copy!]`
+
+Examples:
+Point: `[-73.999683, 40.715062]`
+
+line: `[
+                [-74.001187, 40.71324],
+                [-73.998222, 40.7108],
+                [-73.999855, 40.709597],
+                [-74.00471, 40.707905]
+            ]`
+
+Polygon: `[
+                [
+                    [-74.001097, 40.725535],
+                    [-73.995598, 40.722022],
+                    [-73.985803, 40.724624],
+                    [-73.983053, 40.730869],
+                    [-73.983912, 40.735421],
+                    [-73.990614, 40.733991],
+                    [-73.99955, 40.733991],
+                    [-74.00419, 40.731259],
+                    [-74.001097, 40.725535]
+                ]
+            ]`
+
+Again, this looks scarier than it is. A point is a pair of lat longs inside of brackets `[x,y]`. A line is a list of these these pairs inside of a set of brackets `[ [x1,y1], [x2,y2] ] `. A polygon is similar to a line, a list of ordered pairs, but it is additionally closed to make a polygon so it gets an extra set of brackets `[ [ [x1,y1],[x2,y2],[x3,y3] ] ]`
+
+3. in all three cases, you are going to copy the coordinates you want to map from your cheet, and paste them into your geometry cell for that row of data. **Don't just paste in the cell, click the cell then paste it into the**
+![alt text]()
