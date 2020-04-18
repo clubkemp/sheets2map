@@ -26,7 +26,7 @@ Line 2
 Line 3
 
 - address(optional): *If your mapped entity is a discrete location (a point), you can put in the address then geocode it. Select the address, lat, and long cells*
- (https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/geocode.JPG)
+ ![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/geocode.JPG)
 *on the spreadsheet nav bar, next to help, you should see an option to Geocode. You can now use these lat/long valuse in the geometry column*
 
 - lat/long(optional): *Latitude and Longitude respectively*
@@ -53,7 +53,7 @@ Line 3
 
 2. If you don't have a hosting environment, no problem just use github pages.
     1. Head over to [GitHub](https://github.com/) and [create a new repository](https://github.com/new) named username.github.io, where username is your username (or organization name) on GitHub. You must choose to Initialize your repo with a readme.
-    (https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/gitPages.JPG) 
+    ![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/gitPages.JPG) 
     
     *If the first part of the repository doesn’t exactly match your username, it won’t work, so make sure to get it right.*
 
