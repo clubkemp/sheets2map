@@ -33,7 +33,7 @@
   const overlayMaps = {};
   
   const changeBackground = () =>{
-    console.log('background style fired')
+    //console.log('background style fired')
     
     //now loop through the dom array and find the colorHex keys
     const updateColor = (array) =>{
@@ -63,142 +63,9 @@
       }
     }
     if(i === allElements.length){
-      console.log(allClasses);
+      //console.log(allClasses);
       updateColor(allClasses);
     }    
-  }
-
-  const addWhatcomData = () =>{
-    const publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1t6poxASwttk19eWoOlzpBMjfLuZlzFfzgI14zxbQT0I/edit?usp=sharing';
-
-    const init = () =>{
-      Tabletop.init(
-        { key: publicSpreadsheetUrl,
-        parseNumber:false,
-        callback: loadData,
-        simpleSheet: true 
-        } 
-      )
-    }
-
-    const loadData = (spreadsheet, tabletop) =>{
-      console.log('Load data running')
-      const layers = {
-        'Grocery Stores':[], 
-        'Food Services':[],
-        'Civic Services':[],
-        'Health Services':[],
-        'Other Services':[],
-        'Department Stores':[]
-        }
-      
-      let i=0
-
-      const pushLayers = (item) =>{
-        if (item.type === 'GroceryStores'){
-          layers['Grocery Stores'].push(item);
-        }else if (item.type === 'FoodServices'){
-          layers['Food Services'].push(item);
-        }else if (item.type === 'CivicServices'){
-          layers['Civic Services'].push(item);
-        }else if (item.type === 'HealthServices'){
-          layers['Health Services'].push(item);
-        }else if (item.type === 'Other'){
-          layers['Other Services'].push(item);
-        }else if (item.type === 'DepartHardware'){
-          layers['Department Stores'].push(item);
-        }
-      }
-      
-      spreadsheet.forEach(e =>{
-        e.geometry = JSON.parse(e.geometry)
-        if (e.geoType === 'Point'){
-          e.point = e.geometry;
-          i++
-        }else if(e.geoType === 'Line'){
-          e.line = e.geometry;
-          i++
-        }else {
-          e.polygon = e.geometry;
-          i++
-        }
-        pushLayers(e);
-      });
-      if (i === spreadsheet.length){
-        console.log('load data fired')
-        toGeo(layers);
-        return;
-      }
-    };
-    window.addEventListener('DOMContentLoaded', init)
-    //window.addEventListener('DOMContentLoaded', init)
-    
-    const geoArray = []
-
-    const toGeo = (layers) => {
-      console.log('toGeo running...')
-      const layerLength = Object.keys(layers).length
-      const keys = (Object.keys(layers));
-      keys.forEach(e =>{
-        const feature = layers[e];
-        const geoJSON = GeoJSON.parse(feature, {'Point': 'point', 'LineString': 'line', 'Polygon': 'polygon'});
-        geoJSON.id = e;
-        geoArray.push(geoJSON);
-      })
-      if (layerLength === geoArray.length){
-        console.log('toGeo fired');
-        addGeoJsonLayers(geoArray);
-        return;
-      }
-    };
-    
-    const addGeoJsonLayers = (arr) =>{
-      var geojsonMarkerOptions = {
-      radius: 10,
-      fillColor: "#ff7800",
-      color: "#000",
-      weight: 1,
-      opacity: 1,
-      fillOpacity: 0.8
-      };
-      
-      arr.forEach(e =>{
-        let layerName= e.id
-        e.id = new L.geoJSON(e, {
-          style: function (feature) {
-            return {
-              "color":feature.properties.color,
-              }
-            },
-          pointToLayer: function (feature, latlng) {
-            const myIcon = L.icon({
-              iconUrl: 'restaurant-15.svg',
-              iconSize: [20, 20],
-            // iconAnchor: [22, 94],
-              //popupAnchor: [-3, -76],
-              //shadowUrl: 'my-icon-shadow.png',
-              //shadowSize: [68, 95],
-              //shadowAnchor: [22, 94]
-            });
-            let color = feature.properties.color;
-            console.log(color)
-            newColor = color.replace('#','colorHex'); 
-            myIcon.options.className = newColor;
-            myIcon.options.iconUrl = './icons/'+feature.properties.icon+'.svg';
-            return L.marker(latlng,{icon:myIcon});
-          }
-        
-        }).bindPopup(function (layer) {
-          //let template = {'<>':'div', 'class':'popup','html':'${name} ${year}'};
-          //return json2html.transform(layer)
-          return `<div class="popup"><h2>${layer.feature.properties.name}</h2>${layer.feature.properties.popup}</div>`
-        }).addTo(map);
-        overlayMaps[layerName] = e.id;
-      })
-      addLayerControl(overlayMaps);
-      changeBackground();
-    };
-    // map.on("overlayadd", changeBackground);
   }
 
   const addUserData = () =>{
@@ -268,6 +135,7 @@
     };
     
     const addGeoJsonLayers = (arr) =>{
+      let geoIndex = arr.length;
       var geojsonMarkerOptions = {
       radius: 10,
       fillColor: "#ff7800",
@@ -278,6 +146,8 @@
       };
       
       arr.forEach(e =>{
+        geoIndex = geoIndex -1
+        //console.log(geoIndex);
         let layerName= e.id
         e.id = new L.geoJSON(e, {
           style: function (feature) {
@@ -305,10 +175,13 @@
         }).bindPopup(function (layer) {
           //let template = {'<>':'div', 'class':'popup','html':'${name} ${year}'};
           //return json2html.transform(layer)
-          return `<div class="popup"><h2>${layer.feature.properties.name}</h2>${layer.feature.properties.popup}</div>`
+          return `<div class="popup"><h2>${layer.feature.properties.name}</h2><p>${layer.feature.properties.popup}</p></div>`
         }).addTo(map);
         overlayMaps[layerName] = e.id;
         changeBackground();
+        if (geoIndex === 0){
+          addLayerControl(overlayMaps);
+        }
       })
     };
   }
@@ -317,7 +190,6 @@
   }
 map.on("overlayadd", changeBackground);
 addUserData();
-addWhatcomData();
 </script>
 </body>
 </html>

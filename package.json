@@ -1,0 +1,15 @@
+{
+  "name": "sheet2map",
+  "version": "1.0.0",
+  "description": "A lightweight mapping framework to connect google sheets to leaflet",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -d lib"
+  },
+  "author": "J. Kemp",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}

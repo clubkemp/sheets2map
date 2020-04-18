@@ -7,9 +7,12 @@
     text-align: center;
 }
 
-.popup span {
+.popup span{
     display: block;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.popup p{
     color: grey;
 }
 
