@@ -110,4 +110,4 @@ Polygon: `[
 Again, this looks scarier than it is. A point is a pair of lat longs inside of brackets `[x,y]`. A line is a list of these these pairs inside of a set of brackets `[ [x1,y1], [x2,y2] ] `. A polygon is similar to a line, a list of ordered pairs, but it is additionally closed to make a polygon so it gets an extra set of brackets `[ [ [x1,y1],[x2,y2],[x3,y3] ] ]`
 
 3. in all three cases, you are going to copy the coordinates you want to map from your cheet, and paste them into your geometry cell for that row of data. **Don't just paste in the cell, click the cell then paste it into the**
-![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/GEometry.png)
+![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/Geometry2.png)
