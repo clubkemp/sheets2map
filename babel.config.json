@@ -1,0 +1,14 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "ie":"11"
+        },
+        "useBuiltIns": "usage"
+      }
+    ]
+  ],
+  "plugins":["babel-plugin-loop-optimizer"]
+}

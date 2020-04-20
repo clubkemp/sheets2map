@@ -6,7 +6,7 @@ sheet2map is a lightweight mapping platform that can give your spredsheet a visu
 ## Example Map
 
 Vist the template google spreadsheet below
-[Template sheet](shorturl.at/cexS3)
+[Template sheet](https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing)
 
 At the same time have a look at the map this sheet is powering
 [Example map](https://clubkemp.github.io/sheet2map/)
@@ -79,6 +79,7 @@ In your spreadsheet, go ahead and delete the sample data, and get rid of the add
 
 To get lat/long data off of addresses you can use the Geocode function built into your sheet and outlined above in the example map, under the address item
 
+### Visually map
 If you want to visually map points, lines, or polygons head over to [geoman.io's editor](https://geoman.io/geojson-editor). Sheet map supports Points, Lines, and Polygons. 
 1. You can draw a marker, line, or polygon using the toggles on the left of the map.
 2. once you draw a feature, it's code pops up in the text editor on the right. Don't let this code frightne you, all you need is to see the geometry section, you are going to copy everything inside the outermost brackets `[Geometry you are going to copy!]`
@@ -110,4 +111,22 @@ Polygon: `[
 Again, this looks scarier than it is. A point is a pair of lat longs inside of brackets `[x,y]`. A line is a list of these these pairs inside of a set of brackets `[ [x1,y1], [x2,y2] ] `. A polygon is similar to a line, a list of ordered pairs, but it is additionally closed to make a polygon so it gets an extra set of brackets `[ [ [x1,y1],[x2,y2],[x3,y3] ] ]`
 
 3. in all three cases, you are going to copy the coordinates you want to map from your cheet, and paste them into your geometry cell for that row of data. **Don't just paste in the cell, click the cell then paste it into the**
+
 ![alt text](https://raw.githubusercontent.com/clubkemp/sheets2map/master/images/Geometry2.png)
+
+### Style your data
+*Give your points, lines, and polygons some color*. Enter any Hex color into the color column. What'S a hex color? It's just a code for any color of the rainbow, you can figure out what color you want using a tool like [html color codes](https://htmlcolorcodes.com/color-picker/). Just copy and paste the HEX into the color column (example #DE20C7 is hot pink)
+
+*Add icons to your points*. The icon dropdown let's you select any Maki icon for your points. Check out the visual list of icons [here](https://labs.mapbox.com/maki-icons/)
+
+
+## Extra Sheet-Fu to power your mapping
+There are a few spreadsheet tricks you can use to extend your mapping capabilities with sheet2map.
+
+### data driven pop-ups
+Instead of writing out the pop up infor for each feature, you can have columns of data dynamically update your pop-up field in your sheet using [textjoin](https://support.google.com/docs/answer/7013992?hl=en)
+In your popup cell you would enter something like:
+
+`=TEXTJOIN("",TRUE,"<span>",J2,"</span>","<span>","Hours:",G2,"</span>","<span>","Amenity:",I2,"</span>","<span>","Website:",K2,"</span>","<span>","Email:",L2,"</span>","<span>","Phone:",M2,"</span>")`
+
+First argument is a delimiter, we leave it empty because we are concatenating text. True
