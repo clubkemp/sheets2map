@@ -1,7 +1,7 @@
 # Sheets2Map
 ### Turning your Google Sheets to Maps 
 
-sheet2map is a lightweight mapping platform using leaflet and tabletop, that can give your spredsheet a visual map with minimal amount of steps, and zero coding experience needed. The current version requires some use of great tools, but hopefully will be built into sheet2map in futher iterations.
+sheet2map is a lightweight mapping platform using leaflet and tabletop, that can give your spredsheet a visual map with minimal amount of steps, and zero coding experience needed. The current version requires the use of some additional tools, but hopefully these will be built into sheet2map in futher iterations.
 
 We love non-profits and activists! If you are trying to do some good, and need help getting setup or additional functionality. Reach out to kempj2.jk@gmail.com subject line Sheet2Map Help.
 
@@ -20,17 +20,16 @@ Let's dig into the spreadsheet columns to see how things are mapped. **Unless sp
 - **name**: *Your mapped element name, this will be the title in your popup box when the item is clicked*
 
 - **popup**(optional): *Descriptive text that will appear in the popup box when an item is clicked. If you want your text to appear on different lines you must begin the text with `<span>` and end it with `</span>`.* 
-<p align= "center">
-    Example: `<span>`Line 1`</span><span>`Line2`</span><span>`Line2`</span>`
+   
+            Example: `<span>`Line 1`<span><span>`Line2`<span><span>`Line2`</span>`
 
-    renders as:
+            renders as:
 
-    Line 1
+            Line 1
 
-    Line 2
+            Line 2
 
-    Line 3
-</p>
+            Line 3
 
 - **address**(optional): *If your mapped entity is a discrete location (a point), you can put in the address then geocode it. Select the address, lat, and long cells. On the spreadsheet nav bar, next to help, you should see an option to Geocode. Once run, you should have lat and Long values in the respective columns. You can now use these lat/long valuse in the geometry column*
 
@@ -56,7 +55,7 @@ It's tottaly legit to add yoour own columns to the spreadsheet, these can be hel
 2. With your Copy open, go to file -> click Publish
 3. In the upper right corner, click share, get shareable link. This will be the link you will use in step 3 below
 
-### Step 2: Clone the sheet2map repo, prepare your hosting environment
+### Step 2: Setup your hosting environment
 1. From this repository click 'Clone or download', and choose to download a zip of the repo
 
 2. If you have a hosting environment, your ahead of the curve, upload the sheet2map-master you just downloaded to wherever you want to host it.
@@ -74,13 +73,23 @@ It's tottaly legit to add yoour own columns to the spreadsheet, these can be hel
 
 if you used the myMap example above, Your map should should now be live at yourusername.github.io/myMap
 
-### step 3: Connect your sheet
-1. In the folder list you have setup on your hosting environment, navigate to lib/script.js. If on github use the pencil in the top right to start editing your document 
+### step 3: configure your script file
+1. Go to [BBoxfinder.com](bboxfinder.com). Center your map on the area you want to map, this will be the dafault extent your map opens to.
+    - in the bottomr right toggle to Lat/Lng
+    - copy the value in the bottom left for 'Center'
+    - copy the value for Zoom
 
-2. on line 70, replace  `'https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing'` with your spreadsheet url from step 1
+2. In the folder list you have setup on your hosting environment, navigate to lib/script.js. If on github use the pencil in the top right to start editing your document
+
+3. on line line 2, replace `48.753331,-122.476487` with the center value from step 1
+
+4. on line 4, replace `19` with your zoom value from step 1
+
+2. on line 70, replace  `'https://docs.google.com/spreadsheets/d/1k3OMK24UklLxTvYhF-qH2e1IW3BE89DlgyiCJwRvBGY/edit?usp=sharing'` with your spreadsheet url from Section 1
+
 3. At the bottom of the page, click commit changes
 
-That's it! You now have a live map connected to your live google spreadsheet. So now let's start mapping!
+*That's it! You now have a live map connected to your live google spreadsheet. So now let's start mapping!*
 
 ## Let's start mapping
 In your spreadsheet, go ahead and delete the sample data, and get rid of the additional 'Each tab is a layer' sheet. Don't touch Validation, this contains the information used to generate the dropdown lists in your spreadsheet.
