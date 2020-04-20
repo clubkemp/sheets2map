@@ -37,7 +37,6 @@ const map = L.map('mapid').setView([48.753331,-122.476487], 13);
       var classes = allElements[i].className.toString().split(/\s+/);
       for (var j = 0; j < classes.length; j++) {
         var cls = classes[j];
-        console.log(cls);
         if (cls.indexOf("colorHex") === 0)
           allClasses.push(cls);
       }
