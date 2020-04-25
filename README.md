@@ -46,7 +46,7 @@ Let's dig into the spreadsheet columns to see how things are mapped. **Unless sp
 - **icon**: *If you are mapping a point, choose what icon you want to represent your point. You can choose any of [Mapbox's Maki icons](https://labs.mapbox.com/maki-icons/), for a visual list follow the link*
 
 #### Additional data
-It's tottaly legit to add yoour own columns to the spreadsheet, these can be helpful for organizing data elements that drive styling and pop up generation, or just record keeping. See 'Sheet-Fu' section for tips
+It's totally legit to add your own columns to the spreadsheet, these can be helpful for organizing data elements that drive styling and pop up generation, or just record keeping. See 'Sheet-Fu' section for tips
 
 ## So how do I setup a spreadsheet and a map?
 
@@ -75,7 +75,7 @@ if you used the myMap example above, Your map should should now be live at youru
 
 ### step 3: configure your script file
 1. Go to [BBoxfinder.com](bboxfinder.com). Center your map on the area you want to map, this will be the dafault extent your map opens to.
-    - in the bottomr right toggle to Lat/Lng
+    - in the bottom right toggle to Lat/Lng
     - copy the value in the bottom left for 'Center'
     - copy the value for Zoom
 
@@ -99,7 +99,7 @@ To get lat/long data off of addresses you can use the Geocode function built int
 ### Visually map
 If you want to visually map points, lines, or polygons head over to [geoman.io's editor](https://geoman.io/geojson-editor). Sheet map supports Points, Lines, and Polygons. 
 1. You can draw a marker, line, or polygon using the toggles on the left of the map.
-2. once you draw a feature, it's code pops up in the text editor on the right. Don't let this code frightne you, all you need is to see the geometry section, you are going to copy everything inside the outermost brackets `[Geometry you are going to copy!]`
+2. once you draw a feature, it's code pops up in the text editor on the right. Don't let this code frighten you, all you need is to see the geometry section, you are going to copy everything inside the outermost brackets `[Geometry you are going to copy!]`
 
 Examples:
 Point: `[-73.999683, 40.715062]`
@@ -125,7 +125,7 @@ Polygon: `[
                 ]
             ]`
 
-Again, this looks scarier than it is. A point is a pair of lat longs inside of brackets `[x,y]`. A line is a list of these these pairs inside of a set of brackets `[ [x1,y1], [x2,y2] ] `. A polygon is similar to a line, a list of ordered pairs, but it is additionally closed to make a polygon so it gets an extra set of brackets `[ [ [x1,y1],[x2,y2],[x3,y3] ] ]`
+Again, this looks scarier than it is. A point is a pair of lat longs inside of brackets `[x,y]`. A line is a list of these pairs inside of a set of brackets `[ [x1,y1], [x2,y2] ] `. A polygon is similar to a line, a list of ordered pairs, but it is additionally closed to make a polygon so it gets an extra set of brackets `[ [ [x1,y1],[x2,y2],[x3,y3] ] ]`
 
 3. in all three cases, you are going to copy the coordinates you want to map from your cheet, and paste them into your geometry cell for that row of data. **Don't just paste in the cell, click the cell then paste it into the**
 
@@ -146,7 +146,7 @@ Data validation can be a powerful thing, it standardizes your data, and keeps ou
 Do yourself a favor a setup <a href="https://sites.google.com/site/herosheets/validation" target="_blank">Data Validation</a>.If it were me, I would create my validation list in the validation tab (that's why it is there)! You can see there is already a validation list setup for Icons and Geotype. use those as examples if you need!
 
 ### data driven pop-ups
-Instead of writing out the pop up infor for each feature, you can have columns of data dynamically update your pop-up field in your sheet using [textjoin](https://support.google.com/docs/answer/7013992?hl=en)
+Instead of writing out the pop up information for each feature, you can have columns of data dynamically update your pop-up field in your sheet using [textjoin](https://support.google.com/docs/answer/7013992?hl=en)
 In your popup cell you would enter something like:
 
 `=TEXTJOIN("",TRUE,"<span>",J2,"</span>","<span>","Hours:",G2,"</span>","<span>","Amenity:",I2,"</span>","<span>","Website:",K2,"</span>","<span>","Email:",L2,"</span>","<span>","Phone:",M2,"</span>")`
@@ -172,8 +172,8 @@ now back in your data tab for feature in row 2, in that color column that choose
 
 Let's break it down. 
 - C2 is the cell that contains the lookup, remember your status column was at position C and we are on row 2 of the data.
-- Validation!G$2:H$3 is saying the lookup table is in the Validation tab and contained between cells G2 and H3. The $ in front of the row numbers here keeps these numbers constant so if you drag the formula down to fill other cells these numbers wont change
-- 2 specifys this is the inex of the value you want to grab, if you look at the lookup table example the status is at index 1 and the color is at index 2. We want color so 2
+- Validation!G$2:H$3 is saying the lookup table is in the Validation tab and contained between cells G2 and H3. The $ in front of the row numbers here keeps these numbers constant so if you drag the formula down to fill other cells these numbers won't change
+- 2 specifies this is the index of the value you want to grab, if you look at the lookup table example the status is at index 1 and the color is at index 2. We want color so 2
 - False basically will make sure we get an exact match for our lookup. Since you setup a validation on your status column you know the values will always be 'open' or 'closed'.
 
 That's it! You can do the same for Icons! Say off a service type column at position D in your data for row # 16
