@@ -29,14 +29,14 @@ const map = L.map('mapid').setView([48.753331,-122.476487], 13);
         })
       }
     
-    var allClasses = [];
+    const allClasses = [];
     //get the dom elements
-    var allElements = document.querySelectorAll('img[class*="colorHex"');
+    const allElements = document.querySelectorAll('img[class*="colorHex"');
     //loop through and populate the array with dom elements
-    for (var i = 0; i < allElements.length; i++) {
-      var classes = allElements[i].className.toString().split(/\s+/);
-      for (var j = 0; j < classes.length; j++) {
-        var cls = classes[j];
+    for (let i = 0; i < allElements.length; i++) {
+      cibst classes = allElements[i].className.toString().split(/\s+/);
+      for (let j = 0; j < classes.length; j++) {
+        let cls = classes[j];
         if (cls.indexOf("colorHex") === 0)
           allClasses.push(cls);
       }
@@ -115,7 +115,7 @@ const map = L.map('mapid').setView([48.753331,-122.476487], 13);
     
     const addGeoJsonLayers = (arr) =>{
       let geoIndex = arr.length;
-      var geojsonMarkerOptions = {
+      const geojsonMarkerOptions = {
       radius: 10,
       fillColor: "#ff7800",
       color: "#000",
