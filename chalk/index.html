@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Columbia Neighborhood Map Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""/>
+      <!--Local CSS stylesheet-->
+      <link rel="stylesheet" type="text/css" href="style.css"> 
+      <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+    <!--papaParse for accessing google spreadsheets-->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.min.js'></script>
+    <!--library to convert formatted JSON to Geojson-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/geojson/0.5.0/geojson.js"></script>
+  
+  </head>
+  <body>
+    <div class="container-md">
+      <div class="header">
+        <a href="https://columbianeighborhood.org/index.php/category/corona-virus/">Back to Blog Home</a>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <img src=./banner.jpg class="img-fluid" alt="Responsive image">
+    </div>
+    <div class="container-lg">
+      <div class="row">
+          <p><strong>Columbia Neighbors,</strong> please join us on July 4th from 10:00 AM to 2:00 PM to play with chalk on the sidewalk in front of your own home. This is for all ages, from pre-schoolers to adults, beginners to professionals. And then we can all tour the neighborhood from 2:00 to 5:00 PM to see our fun creations! Musicians can sign up to play from their front porches. You will also be able to upload chalk photos to this website so that anyone who wants to, can take a virtual tour. You can invite all your friends and distant family to view online without concern about crowds.</p>
+          <p>Columbia Elementary School sidewalks will be available with widely spaced “canvases” as well.</p> 
+          <p><strong>How it works:</strong> Use the button below to fill out the sign-up form. This will collect some personal information (which we will only use to coordinate with you and will never share or exploit in any way), and the location where you plan to chalk/play music, etc. We will add your location onto the map, and a description if you’d like to add one.</p> 
+          <p>There’s a place on the sign-up page to request chalk if you need it. Please try to provide your own chalk, and find it as soon as possible, because chalk seems to be in short supply this year. If you are unable to find your own, there is a place on the registration form to request chalk. We have a limited supply, so request early. We will try our best to fill all requests. </p>
+          <p>There is also a place to request space if you don’t have a sidewalk out front. And a place to donate the sidewalk in front of your own house if no one is planning to use it. If you sign up right away, we have a good chance of being able to get enough chalk for everyone who requests it. And I’ll have some clue about how many volunteers we may need. There are sign-ups on the form for volunteers as well.</p>           
+          <p><strong>This is a community project</strong> If you have ideas of how to make this better, would like to get involved, or have other suggestions email Flip Breskin: flip@columbianeighborhood.org</p>
+      </div>
+      <h3>Join in on the fun! Sign up for Chalk Walk</h3>
+      <img class="arrow" src="https://rogerdudler.github.io/git-guide/img/arrow.png">
+    </div>
+    <div class="container-fluid" id="input">
+      <div class="container-lg">
+        <div class="row">
+          <button class="btn btn-primary" id="form"  type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Sign up form
+          </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd1yF5mU4sCqCcCiork5zDq-smccCaxPxCJIXEVMTEnFMWCcQ/viewform?embedded=true" width="640" height="2300" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="container-lg">
+        <h3>Once your submission is reviewed, it'll show up on the map</h3>
+        <img class="arrow" src="https://rogerdudler.github.io/git-guide/img/arrow.png"> 
+        <div id="mapid"></div> 
+        <h3 id="legendTitle">Map legend</h3>
+        <img class="arrow" src="https://rogerdudler.github.io/git-guide/img/arrow.png"> 
+        <div class="row" id="legend">
+          <div class="col-sm">
+            <img class="img-fluid align-middle d-flex flex-wrap align-items-center" src="./chalk-legend.png">
+          </div>
+          <div class="col-sm">
+            <img class="img-fluid align-middle" src="./other-legend.png">
+          </div>
+        </div> 
+      </div>
+    
+    
+    <script src="../src/chalkScript.js"></script>
+  </body>
+</html>

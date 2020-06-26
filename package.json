@@ -1,7 +1,7 @@
 {
   "name": "sheet2map",
-  "version": "1.0.1",
-  "description": "A lightweight mapping framework to connect google sheets to leaflet",
+  "version": "1.0.2",
+  "description": "A lightweight mapping app to connect google sheets to leaflet",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
