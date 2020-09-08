@@ -1,8 +1,10 @@
-//variable that holds the different publish as csv links from google, and the layer name. WIll need to serve these through a proxy currently
+//Keeps are for babel build configurations
+
+//variable that holds the different publish as csv links from google, and the layer name.
+//replace each one using format 'layer name': 'CSV_link'
 const sheetUrls = {
   'layer 1' : 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTIjkijwlK4eW_L9nm6AWjTWstza4BWXLT-tCm3eAZ83ljqk0K-EZccQHLJUotq9WE-_donmArGCjuR/pub?gid=0&single=true&output=csv',
-  'Each tab is a layer': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTIjkijwlK4eW_L9nm6AWjTWstza4BWXLT-tCm3eAZ83ljqk0K-EZccQHLJUotq9WE-_donmArGCjuR/pub?gid=1389646946&single=true&output=csv',
-  'Photos': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTXIbc51VbzJwWJYN88y_ZWFKGygsbGxyBG93h4oaQ11FYMujbNAjRhXSbgE9YqroT1hNPh2LR9-ruZ/pub?gid=1125356036&single=true&output=csv'
+  'Each tab can be a layer': 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTIjkijwlK4eW_L9nm6AWjTWstza4BWXLT-tCm3eAZ83ljqk0K-EZccQHLJUotq9WE-_donmArGCjuR/pub?gid=1389646946&single=true&output=csv',
 }
 const mapInfo = {
   'lat' : 48.753331,

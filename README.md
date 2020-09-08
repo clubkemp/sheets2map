@@ -1,7 +1,7 @@
 # Sheets2Map
 ### Turning your Google Sheets to Maps 
 
-sheet2map is a lightweight mapping platform using leaflet and tabletop, that can give your spredsheet a visual map with minimal amount of steps, and zero coding experience needed. The current version requires the use of some additional tools, but hopefully these will be built into sheet2map in futher iterations.
+sheet2map is a lightweight mapping platform using [leaflet](https://leafletjs.com/) and [papaparse](https://www.papaparse.com/), that can give your spredsheet a visual map with minimal amount of steps, and zero coding experience needed. The current version requires the use of some additional tools, but hopefully these will be built into sheet2map in futher iterations.
 
 We love non-profits and activists! If you are trying to do some good, and need help getting setup or additional functionality. Reach out to kempj2.jk@gmail.com subject line Sheet2Map Help.
 

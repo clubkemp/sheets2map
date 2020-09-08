@@ -1,6 +1,6 @@
 {
   "name": "sheet2map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight mapping app to connect google sheets to leaflet",
   "main": "index.html",
   "scripts": {
